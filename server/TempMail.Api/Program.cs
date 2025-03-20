@@ -1,3 +1,5 @@
+using TempMail.Api.Endpoints;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -23,5 +25,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors();
+app.MapApiEndpoints();
 
 app.Run();
