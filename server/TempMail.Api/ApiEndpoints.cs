@@ -10,5 +10,6 @@ public static class ApiEndpoints
         
         public const string GetEmails = $"{Base}/{{id:Guid}}/emails";
         public const string CreateInbox = $"{Base}";
+        public const string ProcessEmail = $"{Base}/emails";
     }
 }
