@@ -8,7 +8,7 @@ public static class ApiEndpoints
     {
         private const string Base = $"{ApiBase}/inboxes";
         
-        public const string GetEmails = $"{Base}/{{idOrSlug}}/emails";
+        public const string GetEmails = $"{Base}/{{id:Guid}}/emails";
         public const string CreateInbox = $"{Base}";
     }
 }
