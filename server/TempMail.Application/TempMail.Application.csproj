@@ -14,6 +14,7 @@
       </PackageReference>
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+      <PackageReference Include="SmorcIRL.TempMail" Version="2.2.0" />
     </ItemGroup>
 
 </Project>

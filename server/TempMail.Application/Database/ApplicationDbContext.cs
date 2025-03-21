@@ -5,8 +5,8 @@ namespace TempMail.Application.Database;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-    public DbSet<Inbox> Inboxes { get; set; }
-    public DbSet<Email> Emails { get; set; }
+    public DbSet<Inbox> Inboxes { get; init; }
+    public DbSet<Email> Emails { get; init; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
