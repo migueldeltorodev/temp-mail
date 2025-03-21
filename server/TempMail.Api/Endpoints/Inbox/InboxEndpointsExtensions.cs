@@ -6,6 +6,8 @@ public static class InboxEndpointsExtensions
     {
         app.MapCreateInbox();
         app.MapGetEmails();
+        app.MapProcessEmail();
+        app.MapGetEmails();
         return app;
     }
 }
