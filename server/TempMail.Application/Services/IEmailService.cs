@@ -4,8 +4,8 @@ namespace TempMail.Application.Services;
 
 public interface IEmailService
 {
-    Task<Inbox> CreateInboxAsync();
-    Task<Email> ProcessEmailAsync(string to, string from, string subject, string body);
-    Task<IEnumerable<Email>> GetEmailsForInboxAsync(Guid inboxId);
-    Task<bool> DeleteExpiredInboxesAsync();
+    Task<Inbox> CreateInboxAsync(CancellationToken token);
+    Task<Email> ProcessEmailAsync(Email request, CancellationToken token);
+    Task<IEnumerable<Email>> GetEmailsForInboxAsync(Guid inboxId, CancellationToken token);
+    Task<bool> DeleteExpiredInboxesAsync(CancellationToken token);
 }

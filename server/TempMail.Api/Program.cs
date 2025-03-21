@@ -1,7 +1,8 @@
 using TempMail.Api.Endpoints;
+using TempMail.Application;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var config = builder.Configuration;
 
 builder.Services.AddOpenApi();
 
@@ -15,6 +16,9 @@ builder.Services.AddCors(options =>
             .AllowCredentials();
     });
 });
+
+builder.Services.AddApplication();
+builder.Services.AddDatabase(config["Database:ConnectionString"]!);
 
 var app = builder.Build();
 
