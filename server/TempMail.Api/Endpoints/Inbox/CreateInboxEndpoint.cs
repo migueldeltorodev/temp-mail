@@ -1,3 +1,4 @@
+using TempMail.Api.Mapping;
 using TempMail.Application.Services;
 
 namespace TempMail.Api.Endpoints.Inbox;
@@ -15,7 +16,8 @@ public static class CreateInboxEndpoint
             try
             {
                 var inbox = await emailService.CreateInboxAsync(token);
-                return Results.Created($"Inbox/{inbox.Id}", inbox.Address);
+                var response = inbox.MapToInboxResponse();
+                return Results.Created($"Inbox/{response.Id}", response.Email);
             }
             catch (Exception e)
             {

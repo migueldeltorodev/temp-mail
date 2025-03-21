@@ -3,6 +3,7 @@ using TempMail.Application.Database;
 using TempMail.Application.Domain;
 using TempMail.Application.Repositories;
 using TempMail.Contracts.Requests;
+using TempMail.Contracts.Responses;
 
 namespace TempMail.Api.Mapping;
 
@@ -19,5 +20,14 @@ public static class ContractMappings
             Body = request.Body,
             ReceivedAt = DateTime.UtcNow,
         };
-    } 
+    }
+
+    public static InboxResponse MapToInboxResponse(this Inbox inbox)
+    {
+        return new InboxResponse
+        {
+            Id = inbox.Id,
+            Email = inbox.Address,
+        };
+    }
 }
