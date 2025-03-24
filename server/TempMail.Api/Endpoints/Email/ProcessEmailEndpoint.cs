@@ -2,7 +2,7 @@ using TempMail.Api.Mapping;
 using TempMail.Application.Services;
 using TempMail.Contracts.Requests;
 
-namespace TempMail.Api.Endpoints.Inbox;
+namespace TempMail.Api.Endpoints.Email;
 
 public static class ProcessEmailEndpoint
 {
@@ -10,7 +10,7 @@ public static class ProcessEmailEndpoint
 
     public static IEndpointRouteBuilder MapProcessEmail(this IEndpointRouteBuilder app)
     {
-        app.MapPost(ApiEndpoints.Emails.GetEmails, async (
+        app.MapPost(ApiEndpoints.Emails.ProcessEmail, async (
             ProcessEmailRequest request,
             IEmailService emailService,
             IInboxService inboxService,
@@ -28,7 +28,7 @@ public static class ProcessEmailEndpoint
                 var inboxId = inbox.Id;
                 var email = request.MapToEmail(inboxId);
                 var result = await emailService.ProcessEmailAsync(email, token);
-                return TypedResults.Ok(result);
+                return TypedResults.Ok(result.MapToEmailResponse());
             }
             catch (Exception ex)
             {
