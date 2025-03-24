@@ -30,4 +30,44 @@ public static class ContractMappings
             Email = inbox.Address,
         };
     }
+
+    public static EmailsResponse MapToEmailsResponse(
+        this IEnumerable<Email> emails,
+        int page,
+        int pageSize,
+        int totalCount)
+    {
+        return new EmailsResponse
+        {
+            Items = emails.Select(MapToEmailResponse),
+            Page = page,
+            PageSize = pageSize,
+            Total = totalCount
+        };
+    }
+    
+    public static EmailResponse MapToEmailResponse(this Email email)
+    {
+        return new EmailResponse
+        {
+            Id = email.Id,
+            From = email.From,
+            Subject = email.Subject,
+            Body = email.Body,
+            ReceivedAt = email.ReceivedAt,
+        };
+    }
+
+    public static GetAllEmailsOptions MapToOptions(this GetAllEmailsRequest request)
+    {
+        return new GetAllEmailsOptions
+        {
+            From = request.From,
+            SortField = request.SortBy?.Trim('+', '-'),
+            SortOrder = request.SortBy is null ? SortOrder.Unsorted :
+                request.SortBy.StartsWith('-') ? SortOrder.Descending : SortOrder.Ascending,
+            Page = request.Page.GetValueOrDefault(PagedRequest.DefaultPage),
+            PageSize = request.PageSize.GetValueOrDefault(PagedRequest.DefaultPageSize)
+        };
+    }
 }
