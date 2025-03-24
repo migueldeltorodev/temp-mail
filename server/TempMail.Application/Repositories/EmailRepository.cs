@@ -27,4 +27,9 @@ public class EmailRepository : IEmailRepository
             .OrderByDescending(e => e.ReceivedAt)
             .ToListAsync(cancellationToken);
     }
+
+    public async Task<int> GetCountAsync(string? from, CancellationToken cancellationToken = default)
+    {
+        return await _context.Emails.CountAsync(e => e.From == from, cancellationToken);
+    }
 }

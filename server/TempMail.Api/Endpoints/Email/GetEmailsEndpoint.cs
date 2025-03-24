@@ -1,6 +1,8 @@
+using TempMail.Api.Mapping;
 using TempMail.Application.Services;
+using TempMail.Contracts.Requests;
 
-namespace TempMail.Api.Endpoints.Inbox;
+namespace TempMail.Api.Endpoints.Email;
 
 public static class GetEmailsEndpoint
 {
@@ -10,13 +12,20 @@ public static class GetEmailsEndpoint
     {
         app.MapGet(ApiEndpoints.Emails.GetEmails, async (
             Guid id,
+            [AsParameters] GetAllEmailsRequest request,
             IEmailService emailService,
             CancellationToken token) =>
         {
             try
             {
+                var options = request.MapToOptions();
                 var emails = await emailService.GetEmailsForInboxAsync(id, token);
-                return TypedResults.Ok(emails);
+                var emailsCount = await emailService.GetCountAsync(options.From, token);
+                var emailsResponse = emails.MapToEmailsResponse(
+                    request.Page.GetValueOrDefault(PagedRequest.DefaultPage),
+                    request.PageSize.GetValueOrDefault(PagedRequest.DefaultPageSize),
+                    emailsCount);
+                return TypedResults.Ok(emailsResponse);
             }
             catch (Exception ex)
             {

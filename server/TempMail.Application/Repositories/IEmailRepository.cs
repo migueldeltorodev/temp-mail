@@ -6,4 +6,5 @@ public interface IEmailRepository
 {
     Task<Email> AddAsync(Email email, CancellationToken cancellationToken);
     Task<IEnumerable<Email>> GetByInboxIdAsync(Guid inboxId, CancellationToken cancellationToken);
+    Task<int> GetCountAsync(string? from, CancellationToken cancellationToken = default);
 }
