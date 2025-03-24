@@ -6,10 +6,17 @@ public static class ApiEndpoints
 
     public static class Emails
     {
+        private const string Base = $"{ApiBase}/emails";
+        
+        public const string GetEmails = $"{Base}/{{id:Guid}}";
+        public const string ProcessEmail = $"{Base}/emails";
+    }
+    
+    public static class Inboxes
+    {
         private const string Base = $"{ApiBase}/inboxes";
         
-        public const string GetEmails = $"{Base}/{{id:Guid}}/emails";
         public const string CreateInbox = $"{Base}";
-        public const string ProcessEmail = $"{Base}/emails";
+        public const string DeleteInboxes = $"{Base}";
     }
 }
