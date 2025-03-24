@@ -9,13 +9,13 @@ public static class CreateInboxEndpoint
 
     public static IEndpointRouteBuilder MapCreateInbox(this IEndpointRouteBuilder app)
     {
-        app.MapPost(ApiEndpoints.Emails.CreateInbox, async (
-            IEmailService emailService,
+        app.MapPost(ApiEndpoints.Inboxes.CreateInbox, async (
+            IInboxService inboxService,
             CancellationToken token) =>
         {
             try
             {
-                var inbox = await emailService.CreateInboxAsync(token);
+                var inbox = await inboxService.CreateInboxAsync(token);
                 var response = inbox.MapToInboxResponse();
                 return Results.Created($"Inbox/{response.Id}", response.Email);
             }

@@ -31,4 +31,18 @@ public class InboxRepository : IInboxRepository
         
         return inbox;    
     }
+
+    public async Task<List<Inbox>> GetExpiredInboxes(DateTime expirationDate, CancellationToken cancellationToken)
+    {
+        return await _context.Inboxes
+            .Where(i => i.CreatedAt < expirationDate)
+            .ToListAsync(cancellationToken: cancellationToken);
+    }
+
+    public async Task<bool> RemoveExpiredInboxes(List<Inbox> inboxes, CancellationToken cancellationToken)
+    {
+        _context.Inboxes.RemoveRange(inboxes);
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
+    }
 }
