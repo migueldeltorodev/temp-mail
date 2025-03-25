@@ -4,19 +4,22 @@ public static class ApiEndpoints
 {
     private const string ApiBase = "api";
 
-    public static class Emails
+    public static class V1
     {
-        private const string Base = $"{ApiBase}/emails";
+        public static class Emails
+        {
+            private const string Base = $"{ApiBase}/emails";
         
-        public const string GetEmails = $"{Base}/{{id:Guid}}";
-        public const string ProcessEmail = $"{Base}";
-    }
+            public const string GetEmails = $"{Base}/{{id:Guid}}";
+            public const string ProcessEmail = $"{Base}";
+        }
     
-    public static class Inboxes
-    {
-        private const string Base = $"{ApiBase}/inboxes";
+        public static class Inboxes
+        {
+            private const string Base = $"{ApiBase}/inboxes";
         
-        public const string CreateInbox = $"{Base}";
-        public const string DeleteInboxes = $"{Base}";
+            public const string CreateInbox = $"{Base}";
+            public const string DeleteInboxes = $"{Base}";
+        }
     }
 }

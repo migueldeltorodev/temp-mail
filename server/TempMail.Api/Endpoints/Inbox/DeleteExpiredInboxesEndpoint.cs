@@ -8,7 +8,7 @@ public static class DeleteExpiredInboxesEndpoint
 
     public static IEndpointRouteBuilder MapDeleteExpiredInboxes(this IEndpointRouteBuilder app)
     {
-        app.MapDelete(ApiEndpoints.Inboxes.DeleteInboxes, async (
+        app.MapDelete(ApiEndpoints.V1.Inboxes.DeleteInboxes, async (
                 IInboxService inboxService,
                 CancellationToken cancellationToken) =>
         {
@@ -22,7 +22,9 @@ public static class DeleteExpiredInboxesEndpoint
             
             return Results.Ok();
         })
-        .WithName(Name);
+        .WithName(Name)
+        .WithApiVersionSet(ApiVersioning.VersionSet)  
+        .HasApiVersion(1.0);
         
         return app;
     }

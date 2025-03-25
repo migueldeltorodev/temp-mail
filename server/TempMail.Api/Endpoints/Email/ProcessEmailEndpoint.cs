@@ -10,7 +10,7 @@ public static class ProcessEmailEndpoint
 
     public static IEndpointRouteBuilder MapProcessEmail(this IEndpointRouteBuilder app)
     {
-        app.MapPost(ApiEndpoints.Emails.ProcessEmail, async (
+        app.MapPost(ApiEndpoints.V1.Emails.ProcessEmail, async (
             ProcessEmailRequest request,
             IEmailService emailService,
             IInboxService inboxService,
@@ -36,7 +36,9 @@ public static class ProcessEmailEndpoint
                 return Results.InternalServerError("Error retrieving emails");
             }
         })
-        .WithName(Name);
+        .WithName(Name)
+        .WithApiVersionSet(ApiVersioning.VersionSet)  
+        .HasApiVersion(1.0);
             
         return app;
     }

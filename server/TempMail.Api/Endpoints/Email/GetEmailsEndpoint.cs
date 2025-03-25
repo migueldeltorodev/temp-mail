@@ -10,7 +10,7 @@ public static class GetEmailsEndpoint
 
     public static IEndpointRouteBuilder MapGetEmails(this IEndpointRouteBuilder app)
     {
-        app.MapGet(ApiEndpoints.Emails.GetEmails, async (
+        app.MapGet(ApiEndpoints.V1.Emails.GetEmails, async (
             Guid id,
             [AsParameters] GetAllEmailsRequest request,
             IEmailService emailService,
@@ -33,7 +33,9 @@ public static class GetEmailsEndpoint
                 return Results.InternalServerError("Error retrieving emails");
             }
         })
-        .WithName(Name);
+        .WithName(Name)
+        .WithApiVersionSet(ApiVersioning.VersionSet)  
+        .HasApiVersion(1.0);
             
         return app;
     }

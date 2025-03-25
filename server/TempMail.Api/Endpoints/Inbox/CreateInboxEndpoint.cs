@@ -9,7 +9,7 @@ public static class CreateInboxEndpoint
 
     public static IEndpointRouteBuilder MapCreateInbox(this IEndpointRouteBuilder app)
     {
-        app.MapPost(ApiEndpoints.Inboxes.CreateInbox, async (
+        app.MapPost(ApiEndpoints.V1.Inboxes.CreateInbox, async (
             IInboxService inboxService,
             CancellationToken token) =>
         {
@@ -25,7 +25,9 @@ public static class CreateInboxEndpoint
                 return Results.InternalServerError("Error creating inbox");
             }
         })
-        .WithName(Name);
+        .WithName(Name)
+        .WithApiVersionSet(ApiVersioning.VersionSet)  
+        .HasApiVersion(1.0);
         
         return app;
     }
