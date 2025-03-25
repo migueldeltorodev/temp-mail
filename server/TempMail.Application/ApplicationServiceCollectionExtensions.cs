@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TempMail.Application.Database;
@@ -17,6 +18,9 @@ public static class ApplicationServiceCollectionExtensions
         // Services
         services.AddScoped<IInboxService, InboxService>();
         services.AddScoped<IEmailService, EmailService>();
+        
+        // Validators
+        services.AddValidatorsFromAssemblyContaining<IApplicationMarker>(ServiceLifetime.Scoped);
         
         return services;
     }
