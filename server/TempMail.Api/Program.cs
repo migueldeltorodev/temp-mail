@@ -1,9 +1,13 @@
 using Asp.Versioning;
 using TempMail.Api.Endpoints;
+using TempMail.Api.Health;
 using TempMail.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
+
+builder.Services.AddHealthChecks()  
+    .AddCheck<DatabaseHealthCheck>(DatabaseHealthCheck.Name);
 
 builder.Services.AddApiVersioning(x =>
 {
