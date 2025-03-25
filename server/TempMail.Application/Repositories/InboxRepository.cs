@@ -22,7 +22,7 @@ public class InboxRepository : IInboxRepository
 
     public async Task<Inbox?> GetByAddressAsync(string address, CancellationToken cancellationToken)
     {
-        var inbox = await _context.Inboxes.FirstOrDefaultAsync(i => i.Address.Equals(address, StringComparison.OrdinalIgnoreCase), cancellationToken: cancellationToken);
+        var inbox = await _context.Inboxes.SingleOrDefaultAsync(i => i.Address == address, cancellationToken: cancellationToken);
 
         if (inbox is null)
         {
