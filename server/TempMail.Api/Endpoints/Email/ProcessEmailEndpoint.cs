@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.OutputCaching;
 using TempMail.Api.Mapping;
 using TempMail.Application.Services;
 using TempMail.Contracts.Requests;
@@ -14,6 +15,7 @@ public static class ProcessEmailEndpoint
             ProcessEmailRequest request,
             IEmailService emailService,
             IInboxService inboxService,
+            IOutputCacheStore outputCacheStore,
             CancellationToken token) =>
         {
             try
@@ -28,6 +30,7 @@ public static class ProcessEmailEndpoint
                 var inboxId = inbox.Id;
                 var email = request.MapToEmail(inboxId);
                 var result = await emailService.ProcessEmailAsync(email, token);
+                await outputCacheStore.EvictByTagAsync("emails", token);
                 return TypedResults.Ok(result.MapToEmailResponse());
             }
             catch (Exception ex)

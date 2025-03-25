@@ -35,7 +35,8 @@ public static class GetEmailsEndpoint
         })
         .WithName(Name)
         .WithApiVersionSet(ApiVersioning.VersionSet)  
-        .HasApiVersion(1.0);
+        .HasApiVersion(1.0)
+        .CacheOutput("EmailCache");
             
         return app;
     }

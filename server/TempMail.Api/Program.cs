@@ -31,6 +31,18 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddOutputCache(x =>  
+{  
+    x.AddBasePolicy(c => c.Cache());  
+    x.AddPolicy("EmailCache", c =>  
+    {  
+        c.Cache()  
+            .Expire(TimeSpan.FromMinutes(1))  
+            .SetVaryByQuery(new[]{"from", "sortBy", "page", "pageSize"})  
+            .Tag("emails");  
+    });
+});
+
 builder.Services.AddApplication();
 builder.Services.AddDatabase(config["Database:ConnectionString"]!);
 
@@ -45,6 +57,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors();
+app.UseOutputCache();
 
 app.MapHealthChecks("_health");
 
