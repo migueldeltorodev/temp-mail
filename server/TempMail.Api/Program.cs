@@ -45,6 +45,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors();
+
+app.MapHealthChecks("_health");
+
 app.MapApiEndpoints();
 
 app.Run();
