@@ -15,6 +15,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IEmailRepository, EmailRepository>();
         
         // Services
+        services.AddScoped<IInboxService, InboxService>();
         services.AddScoped<IEmailService, EmailService>();
         
         return services;
