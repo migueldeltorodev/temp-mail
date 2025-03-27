@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { EmailDashboard } from "@/components/organisms/email-dashboard"
 import { Header } from "@/components/organisms/header"
 import { Footer } from "@/components/organisms/footer"
-import { BackgroundDecoration } from "@/components/atoms/background-decoration"
 
 export const metadata: Metadata = {
   title: "TempMail - Inicio",
@@ -12,8 +11,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      <BackgroundDecoration />
-
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8 relative z-10">
         <section className="mb-8 animate-fade-in">
