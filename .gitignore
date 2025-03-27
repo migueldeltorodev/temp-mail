@@ -76,3 +76,15 @@ ehthumbs.db
 ehthumbs_vista.db
 *.stackdump
 [Dd]esktop.ini
+/client/.next/
+.idea/.gitignore
+.idea/indexLayout.xml
+.idea/vcs.xml
+server/.idea/.idea.TempMail/.idea/.name
+client/app/sitemap.xml
+server/.idea/.idea.TempMail/.idea/dataSources.xml
+server/.idea/.idea.TempMail/.idea/indexLayout.xml
+server/.idea/.idea.TempMail/.idea/vcs.xml
+server/TempMail.Api/obj/Debug/net9.0/TempMail.Api.AssemblyInfo.cs
+server/TempMail.Application/obj/Debug/net9.0/TempMail.Application.AssemblyInfo.cs
+server/TempMail.Contracts/obj/Debug/net9.0/TempMail.Contracts.AssemblyInfo.cs
