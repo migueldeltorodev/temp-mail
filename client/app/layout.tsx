@@ -13,20 +13,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TempMail - Servicio de Emails Temporales",
     description: "Crea emails temporales para proteger tu privacidad en línea",
-    url: "https://tempmail.daviddev.com",
-    siteName: "TempMail by David",
-    images: [
-      {
-        url: "/placeholder-logo.svg",
-        width: 1200,
-        height: 630,
-        alt: "TempMail - Servicio de Emails Temporales",
-      },
-    ],
+    // url: "https://tempmail.example.com",
+    // siteName: "TempMail",
+    // images: [
+    //   {
+    //     url: "https://tempmail.example.com/og-image.jpg",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "TempMail - Servicio de Emails Temporales",
+    //   },
+    // ],
     locale: "es_ES",
     type: "website",
-  },
-    generator: 'next.js'
+  }
 }
 
 export default function RootLayout({
