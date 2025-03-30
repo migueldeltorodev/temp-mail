@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("49a4de3b-b8a5-4035-879a-be5154bd0d7c")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("TempMail.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e895302fb06929a97fc8597081c052f8440bc13")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75905e86d18e652cd7abb2fd03073f955cea273f")]
 [assembly: System.Reflection.AssemblyProductAttribute("TempMail.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TempMail.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

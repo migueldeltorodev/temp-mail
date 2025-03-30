@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TempMail.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e895302fb06929a97fc8597081c052f8440bc13")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75905e86d18e652cd7abb2fd03073f955cea273f")]
 [assembly: System.Reflection.AssemblyProductAttribute("TempMail.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TempMail.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
